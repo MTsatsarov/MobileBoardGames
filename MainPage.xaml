@@ -14,21 +14,32 @@
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
-
-            <
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <Entry
+               Placeholder="UserName"
+               Margin="19"
+               MinimumWidthRequest="300"
+                />
+            <Entry
+               Placeholder="Password"
+               IsPassword="True"
+               Margin="19"
+               MinimumWidthRequest="300"
+                />
 
             <Button
                 x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                Text="Sign In"
+                HorizontalOptions="Center"
+                />
 
+            <Frame BorderColor="Transparent" WidthRequest="200" Margin="20">
+                <Frame.GestureRecognizers >
+                    <TapGestureRecognizer NumberOfTapsRequired="1"/>
+
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" Text="Don't have an account ?"/>
+
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 
