@@ -1,4 +1,4 @@
-namespace BoardGames;
+namespace BoardGames.Pages;
 
 public partial class RegisterPage : ContentPage
 {

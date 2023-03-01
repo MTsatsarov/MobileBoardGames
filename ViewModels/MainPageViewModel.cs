@@ -1,6 +1,7 @@
 ﻿
 
 using BoardGames.Models;
+using BoardGames.Pages;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -22,7 +23,13 @@ namespace BoardGames.ViewModels
             await Shell.Current.GoToAsync(nameof(RegisterPage), true);
         }
 
-        [RelayCommand]
+		[RelayCommand]
+		public async Task GoToGamesList()
+		{
+			await Shell.Current.GoToAsync(nameof(GamesList), true);
+		}
+
+		[RelayCommand]
         public async Task SignIn()
         {
         

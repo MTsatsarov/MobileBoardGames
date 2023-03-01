@@ -1,13 +1,31 @@
-﻿using System.Collections.ObjectModel;
+﻿using BoardGames.Models;
+using BoardGames.Pages;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 
 namespace BoardGames.ViewModels
 {
 	public partial class GamesListViewModel : BaseViewModel
 	{
-		public ObservableCollection<string> _games = new ObservableCollection<string>()
+		public ObservableCollection<GamesCollectionModel> Games { get; } = new ObservableCollection<GamesCollectionModel>()
 		{
-			"Tic Tac Toe",
-			"Chess",
+			new GamesCollectionModel()
+			{
+				Name = "Tic Tac Toe",
+				Location= nameof(TicTacToePage)
+			},
+			new GamesCollectionModel()
+			{
+				Name = "Chess",
+				Location= nameof(TicTacToePage)
+			},
 		};
+
+
+		[RelayCommand]
+		public async Task GoToGamePage(GamesCollectionModel model)
+		{
+			await Shell.Current.GoToAsync(model.Location);
+		}
 	}
 }

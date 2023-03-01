@@ -1,6 +1,6 @@
 ﻿using BoardGames.ViewModels;
 
-namespace BoardGames;
+namespace BoardGames.Pages;
 
 public partial class MainPage : ContentPage
 {

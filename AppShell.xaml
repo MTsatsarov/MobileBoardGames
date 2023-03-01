@@ -3,8 +3,9 @@
     x:Class="BoardGames.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BoardGames"
+    xmlns:local="clr-namespace:BoardGames.Pages"
     Shell.FlyoutBehavior="Disabled">
+
 
     <ShellContent
         Title="Home"
@@ -19,5 +20,9 @@
 	<ShellContent
         Title="Games List"
         ContentTemplate="{DataTemplate local:GamesList}"
-        Route="RegisterPage" />
+        Route="GamesList" />
+	<ShellContent
+        Title="Tic Tac Toe"
+        ContentTemplate="{DataTemplate local:TicTacToePage}"
+        Route="TicTacToePage" />
 </Shell>

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BoardGames.MainPage">
+			 xmlns:viewmodel="clr-namespace:BoardGames.ViewModels"
+			  x:DataType="viewmodel:MainPageViewModel"
+             x:Class="BoardGames.Pages.MainPage">
 
     <ScrollView>
         <VerticalStackLayout
@@ -32,15 +34,24 @@
                 HorizontalOptions="Center"
                 />
 
-            <Frame BorderColor="Transparent" WidthRequest="200" Margin="20">
+            <Frame BorderColor="Transparent" WidthRequest="200" Margin="20" >
                 <Frame.GestureRecognizers >
-                    <TapGestureRecognizer NumberOfTapsRequired="1"/>
+					<TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToRegisterCommand}"></TapGestureRecognizer>
 
-                </Frame.GestureRecognizers>
+				</Frame.GestureRecognizers>
                 <Label HorizontalOptions="Center" Text="Don't have an account ?"/>
 
             </Frame>
-        </VerticalStackLayout>
+			
+			<Frame BorderColor="Transparent" WidthRequest="200" Margin="20" >
+				<Frame.GestureRecognizers >
+					<TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToGamesListCommand}"></TapGestureRecognizer>
+
+				</Frame.GestureRecognizers>
+				<Label HorizontalOptions="Center" Text="Go to games"/>
+
+			</Frame>
+		</VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
