@@ -1,4 +1,6 @@
 ﻿using BoardGames.Pages;
+using BoardGames.Services;
+using BoardGames.Services.Interfaces;
 using BoardGames.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -17,9 +19,13 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		//Services
+		builder.Services.AddTransient<ITicTacToeService, TicTacToeService>();
+
 		//ViewModels
 		builder.Services.AddSingleton<MainPageViewModel>();
 		builder.Services.AddSingleton<GamesListViewModel>();
+		builder.Services.AddSingleton<TicTacToeViewModelcs>();
 
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<GamesList>();

@@ -4,15 +4,15 @@ namespace BoardGames.Models
 {
 	public partial class TicTacToeBoard : ObservableObject
 	{
-		[ObservableProperty]
-		private int index;
 
 		[ObservableProperty]
-		private string text;
+		private string _text;
+
 		public TicTacToeBoard(int index)
 		{
-			this.index = index;
+			this.Index = index;
 		}
 
-	}
+        public int Index { get; set; }
+    }
 }

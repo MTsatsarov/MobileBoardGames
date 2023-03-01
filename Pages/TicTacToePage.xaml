@@ -4,22 +4,21 @@
              x:Class="BoardGames.Pages.TicTacToePage"
 			 xmlns:viewmodel="clr-namespace:BoardGames.ViewModels"
 			 x:DataType="viewmodel:TicTacToeViewModelcs"
-				 xmlns:models="clr-namespace:BoardGames.Models"
+			 xmlns:models="clr-namespace:BoardGames.Models"
              Title="Tic Tac Toe">
-	<VerticalStackLayout>
-		<Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-		<CollectionView>
+	<VerticalStackLayout VerticalOptions="CenterAndExpand" >
+		<CollectionView ItemsSource="{Binding List}" WidthRequest="240">
 			<CollectionView.ItemsLayout>
-				<GridItemsLayout Span="3" Orientation="Vertical"/>
+				<GridItemsLayout Span="3" Orientation="Vertical" />
 			</CollectionView.ItemsLayout>
 			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="{Binding  }" >
-					<Frame>
-						<Label Text="Bi"/>
+				<DataTemplate x:DataType="models:TicTacToeBoard" >
+					<Frame BackgroundColor="White" Padding="0"  HeightRequest="80" WidthRequest="80">
+						<Label Text="{Binding Text}" TextColor="Red"  FontSize="28" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+						<Frame.GestureRecognizers>
+							<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
+												  CommandParameter="{Binding .}"/>
+						</Frame.GestureRecognizers>
 					</Frame>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>

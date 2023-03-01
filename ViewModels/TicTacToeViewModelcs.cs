@@ -1,9 +1,10 @@
 ﻿using BoardGames.Models;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace BoardGames.ViewModels
 {
-	public class TicTacToeViewModelcs : BaseViewModel
+	public partial class TicTacToeViewModelcs : BaseViewModel
 	{
 		public ObservableCollection<TicTacToeBoard> List { get; set; } = new ObservableCollection<TicTacToeBoard>();
 
@@ -18,6 +19,13 @@ namespace BoardGames.ViewModels
 			{
 				List.Add(new TicTacToeBoard(i));
 			}
+		}
+
+		[RelayCommand]
+		public async Task MakeMove(TicTacToeBoard board)
+		{
+			
+			board.Text = "X";
 		}
 	}
 }
