@@ -1,8 +1,11 @@
+bin/
+Bin/
+obj/
+Obj/
+
+.vs/
+
 *.suo
 *.user
-_ReSharper.*
-bin
-obj
-packages
-**/bin/*
-**/obj/*
+*.userosscache
+*.sln.docstates
