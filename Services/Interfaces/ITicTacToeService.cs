@@ -1,9 +1,10 @@
 ﻿using BoardGames.Models;
+using System.Collections.ObjectModel;
 
 namespace BoardGames.Services.Interfaces
 {
     public interface ITicTacToeService
     {
-       public int FindBestMove(IEnumerable<TicTacToeBoard> boards);
+       public int FindBestMove(ObservableCollection<TicTacToeBoard> boards);
     }
 }

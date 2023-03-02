@@ -4,7 +4,11 @@ namespace BoardGames.ViewModels
 {
 	public partial class BaseViewModel: ObservableObject
 	{
-		[ObservableProperty]
+        public BaseViewModel()
+        {
+            
+        }
+        [ObservableProperty]
 		[NotifyPropertyChangedFor(nameof(IsNotBusy))]
 		private bool isBusy;
 

@@ -25,7 +25,9 @@
 														  />
 
 								</Frame.GestureRecognizers>
+									<!--<Image Source="{Binding ImagePath}" ZIndex="5" HorizontalOptions="Start" WidthRequest="30" HeightRequest="30"/>-->
 								<Label Text="{Binding Name}"/>
+
 							</Frame>
 						</Grid>
 					</DataTemplate>

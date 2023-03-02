@@ -12,12 +12,14 @@ namespace BoardGames.ViewModels
 			new GamesCollectionModel()
 			{
 				Name = "Tic Tac Toe",
-				Location= nameof(TicTacToePage)
+				Location= nameof(TicTacToePage),
+				ImagePath ="tictactoegamepng.png"
 			},
 			new GamesCollectionModel()
 			{
 				Name = "Chess",
-				Location= nameof(TicTacToePage)
+				Location= nameof(TicTacToePage),
+				ImagePath ="chess.svg"
 			},
 		};
 
