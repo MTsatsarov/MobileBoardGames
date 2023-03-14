@@ -11,13 +11,17 @@ namespace BoardGames.Models
 		[ObservableProperty]
 		private string imagePath;
 
-		public TicTacToeBoard(int index)
+		[ObservableProperty]
+		private int index;
+
+		public TicTacToeBoard()
+        {
+            
+        }
+        public TicTacToeBoard(int index)
 		{
 			this.Index = index;
+			this.ImagePath = null;
 		}
-
-        public int Index { get; set; }
-
-
     }
 }

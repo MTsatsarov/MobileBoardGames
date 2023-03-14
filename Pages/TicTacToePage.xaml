@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="BoardGames.Pages.TicTacToePage"
 			 xmlns:viewmodel="clr-namespace:BoardGames.ViewModels"
 			 x:DataType="viewmodel:TicTacToeViewModelcs"
-			 xmlns:models="clr-namespace:BoardGames.Models"
+			 xmlns:model="clr-namespace:BoardGames.Models"
              Title="Tic Tac Toe">
 	<VerticalStackLayout VerticalOptions="CenterAndExpand" >
 		<ActivityIndicator IsVisible="{Binding IsBusy}"/>
+
+		<Button HorizontalOptions="CenterAndExpand" Text="Restart Game" Margin="20" BackgroundColor="Yellow" Command="{Binding ResetBoardCommand}"/>
+		<RefreshView IsRefreshing="{Binding IsRefreshing}">
 		<CollectionView ItemsSource="{Binding List}" WidthRequest="240">
+
 			<CollectionView.ItemsLayout>
 				<GridItemsLayout Span="3" Orientation="Vertical" />
 			</CollectionView.ItemsLayout>
 			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="models:TicTacToeBoard" >
+					<DataTemplate x:DataType="model:TicTacToeBoard">
 					<Frame BackgroundColor="White" Padding="0"  HeightRequest="80" WidthRequest="80">
 						<Image Source="{Binding ImagePath}" IsAnimationPlaying="true" Background="White"/>
 						<Frame.GestureRecognizers>
-							<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
-												  CommandParameter="{Binding .}"/>
-						</Frame.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
+												  CommandParameter="{Binding Index}"/>
+							</Frame.GestureRecognizers>
 					</Frame>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
+		</RefreshView>
 	</VerticalStackLayout>
 </ContentPage>

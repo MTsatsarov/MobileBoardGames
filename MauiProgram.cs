@@ -25,12 +25,12 @@ public static class MauiProgram
 		//ViewModels
 		builder.Services.AddSingleton<MainPageViewModel>();
 		builder.Services.AddSingleton<GamesListViewModel>();
-		builder.Services.AddSingleton<TicTacToeViewModelcs>();
+		builder.Services.AddTransient<TicTacToeViewModelcs>();
 
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<GamesList>();
 		builder.Services.AddSingleton<RegisterPage>();
-		builder.Services.AddSingleton<TicTacToePage>();
+		builder.Services.AddTransient<TicTacToePage>();
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
