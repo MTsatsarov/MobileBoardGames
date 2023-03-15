@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BoardGames.ViewModels
 {
-	public partial class TicTacToeViewModelcs : BaseViewModel, INotifyPropertyChanged
+	public partial class TicTacToeViewModelcs : BaseViewModel
 	{
 		private readonly ITicTacToeService ticTacToeService;
 
@@ -17,6 +17,15 @@ namespace BoardGames.ViewModels
 
 		[ObservableProperty]
 		private bool isRefreshing;
+
+		[ObservableProperty]
+		private int playerScore;
+
+		[ObservableProperty]
+		private int botScore;
+
+		private readonly string playerSign = "X";
+		private readonly string botSign = "O";
 
 		public TicTacToeViewModelcs(ITicTacToeService ticTacToeService)
 		{
@@ -60,14 +69,47 @@ namespace BoardGames.ViewModels
 
 			this.IsBusy = true;
 
-			this.List[index].Text = "X";
-			this.List[index].ImagePath = "cross.png";
+			this.SetProperties(index,"cross.png",this.playerSign);
+
+			var isPlayerWinner = this.ticTacToeService.CheckForWinner(this.List, "X");
+
+			if (isPlayerWinner)
+			{
+				this.PlayerScore += 1;
+				await ShowAlert("WINNER!!!","Player has won");
+				this.IsBusy = false;
+
+				return;
+			}
 
 			var botIndex =  this.ticTacToeService.FindBestMove(this.List);
 			var botMove = this.List.FirstOrDefault(x => x.Index == botIndex);
-			botMove.Text = "O";
-			botMove.ImagePath = "circle.png";
+
+			this.SetProperties(botIndex, "circle.png", this.botSign);
+
+			var isBotWinner = this.ticTacToeService.CheckForWinner(this.List, "O");
+			if(isBotWinner)
+			{
+				this.BotScore += 1;
+				await ShowAlert("WINNER!!!","Bot has won");
+				this.IsBusy = false;
+
+				return;
+			}
+
 			this.IsBusy = false;
+		}
+
+		private async Task ShowAlert( string title,string message)
+		{
+			await Shell.Current.DisplayAlert(title, message,"OK");
+			this.ResetBoard();
+		}
+
+		private void SetProperties(int index, string imagePath, string text)
+		{
+			this.List[index].Text = text;
+			this.List[index].ImagePath = imagePath;
 		}
 	}
 }

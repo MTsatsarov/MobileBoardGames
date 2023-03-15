@@ -8,26 +8,23 @@
              Title="GamesList">
 
 	<VerticalStackLayout>
-		<Label 
-            Text="Our Games"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-		<Grid>
+		<Grid Margin="0,20,0,0">
 			<CollectionView ItemsSource="{Binding Games}" SelectionMode="None">
 				<CollectionView.ItemTemplate>
 					<DataTemplate x:DataType="model:GamesCollectionModel">
-						<Grid>
-							<Frame>
+						<Grid RowDefinitions="80,Auto" RowSpacing="10" VerticalOptions="Center" Margin="10,0,10,0" HorizontalOptions="Start" Padding="0">
+							<Frame Padding="0">
 								<Frame.GestureRecognizers >
-									<TapGestureRecognizer NumberOfTapsRequired="2"
+									<TapGestureRecognizer NumberOfTapsRequired="1"
 														  CommandParameter="{Binding .}"
 														  Command="{Binding  Source={RelativeSource AncestorType={x:Type local:GamesListViewModel}}, Path=GoToGamePageCommand}"
 														  />
-
 								</Frame.GestureRecognizers>
-									<!--<Image Source="{Binding ImagePath}" ZIndex="5" HorizontalOptions="Start" WidthRequest="30" HeightRequest="30"/>-->
-								<Label Text="{Binding Name}"/>
-
+								
+								<HorizontalStackLayout>
+									<Image  VerticalOptions="Center" Grid.Row="0" Grid.Column="0"  Source="{Binding ImagePath}" HorizontalOptions="StartAndExpand" WidthRequest="100" HeightRequest="50"></Image>
+									<Label FontSize="18" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" WidthRequest="150" HeightRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand"/>
+								</HorizontalStackLayout>
 							</Frame>
 						</Grid>
 					</DataTemplate>

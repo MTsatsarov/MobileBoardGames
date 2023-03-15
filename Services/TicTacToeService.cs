@@ -6,6 +6,26 @@ namespace BoardGames.Services
 {
 	public class TicTacToeService : ITicTacToeService
 	{
+		public bool CheckForWinner(ObservableCollection<TicTacToeBoard> boards,string forWho)
+		{
+			var board = new TicTacToeBoard[,] { { boards[0], boards[1], boards[2]},
+												{ boards[3], boards[4], boards[5]},
+												{ boards[6], boards[7], boards[8]},};
+
+			if ((board[0, 0].Text == forWho && board[0, 1].Text == forWho && board[0, 2].Text == forWho)
+				|| (board[1, 0].Text == forWho && board[1, 1].Text == forWho && board[1, 2].Text == forWho)
+				|| (board[2, 0].Text == forWho && board[2, 1].Text == forWho && board[2, 2].Text == forWho)
+				|| (board[0, 0].Text == forWho && board[1, 0].Text == forWho && board[2, 0].Text == forWho)
+				|| (board[0, 1].Text == forWho && board[1, 1].Text == forWho && board[2, 1].Text == forWho)
+				|| (board[0, 2].Text == forWho && board[1, 2].Text == forWho && board[2, 2].Text == forWho)
+				|| (board[0, 0].Text == forWho && board[1, 1].Text == forWho && board[2, 2].Text == forWho)
+				|| (board[0, 2].Text == forWho && board[1, 1].Text == forWho && board[2, 0].Text == forWho))
+			{
+				return true;
+			}
+			return false;
+		}
+
 		public int FindBestMove(ObservableCollection<TicTacToeBoard> boards)
 		{
 			var board = new TicTacToeBoard[,] { { boards[0], boards[1], boards[2]},

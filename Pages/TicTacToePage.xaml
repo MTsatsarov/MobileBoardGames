@@ -8,27 +8,39 @@
 			 xmlns:model="clr-namespace:BoardGames.Models"
              Title="Tic Tac Toe">
 	<VerticalStackLayout VerticalOptions="CenterAndExpand" >
-		<ActivityIndicator IsVisible="{Binding IsBusy}"/>
+		<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="True"/>
 
-		<Button HorizontalOptions="CenterAndExpand" Text="Restart Game" Margin="20" BackgroundColor="Yellow" Command="{Binding ResetBoardCommand}"/>
-		<RefreshView IsRefreshing="{Binding IsRefreshing}">
-		<CollectionView ItemsSource="{Binding List}" WidthRequest="240">
+		<Border StrokeThickness="5" HorizontalOptions="Center" Padding="5">
+			<HorizontalStackLayout HorizontalOptions="CenterAndExpand" >
+			<VerticalStackLayout Margin="0,0,30,0">
+				<Label FontSize="30" Text="Player"/>
+				<Label Margin="0,20,0,0" FontSize="25" Text="{Binding PlayerScore}" HorizontalOptions="Center"/>
+			</VerticalStackLayout>
+			<VerticalStackLayout Margin="0,0,30,0">
+				<Label FontSize="30" Text="Bot"/>
+				<Label Text="{Binding BotScore}" FontSize="25" HorizontalOptions="Center" Margin="0,20,0,0"/>
+			</VerticalStackLayout>
+		</HorizontalStackLayout>
+		</Border>
 
-			<CollectionView.ItemsLayout>
+		<Button HorizontalOptions="Center" Text="Restart Game" Margin="100,100,100,10" BackgroundColor="Red" Command="{Binding ResetBoardCommand}"/>
+			<CollectionView ItemsSource="{Binding List}" WidthRequest="240" HorizontalOptions="Center">
+				<CollectionView.ItemsLayout>
 				<GridItemsLayout Span="3" Orientation="Vertical" />
 			</CollectionView.ItemsLayout>
 			<CollectionView.ItemTemplate>
 					<DataTemplate x:DataType="model:TicTacToeBoard">
-					<Frame BackgroundColor="White" Padding="0"  HeightRequest="80" WidthRequest="80">
-						<Image Source="{Binding ImagePath}" IsAnimationPlaying="true" Background="White"/>
+					<Border StrokeThickness="4" StrokeShape="Rectangle">
+					<Frame BackgroundColor="White" Padding="2"  HeightRequest="80" WidthRequest="80">
+						<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
 						<Frame.GestureRecognizers>
 								<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
 												  CommandParameter="{Binding Index}"/>
 							</Frame.GestureRecognizers>
 					</Frame>
+					</Border>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
-		</RefreshView>
 	</VerticalStackLayout>
 </ContentPage>

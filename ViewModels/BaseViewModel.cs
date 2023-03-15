@@ -15,6 +15,6 @@ namespace BoardGames.ViewModels
 		[ObservableProperty]
 		private string title;
 
-		public bool IsNotBusy => !isBusy;
+		public bool IsNotBusy => !IsBusy;
 	}
 }
