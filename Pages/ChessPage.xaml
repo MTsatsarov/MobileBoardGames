@@ -2,27 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BoardGames.Pages.ChessPage"
-             Title="ChessPage">
-    <VerticalStackLayout>
-		<Grid>
-			<CollectionView>
+			 xmlns:model="clr-namespace:BoardGames.Models.Chess"
+			xmlns:viewmodel="clr-namespace:BoardGames.ViewModels"
+			 x:DataType="viewmodel:ChessViewModel"
+             Title="ChessPage"
+			 Background="red">
+	<VerticalStackLayout VerticalOptions="CenterAndExpand">
+		<Grid >
+			<CollectionView ItemsSource="{Binding Board}" WidthRequest="360" HeightRequest="380">
 				<CollectionView.ItemsLayout>
 					<GridItemsLayout Span="8" Orientation="Vertical" />
 				</CollectionView.ItemsLayout>
 				<CollectionView.ItemTemplate>
-					<DataTemplate x:DataType="model:TicTacToeBoard">
-						<Border StrokeThickness="4" StrokeShape="Rectangle">
-							<Frame BackgroundColor="White" Padding="2"  HeightRequest="80" WidthRequest="80">
-								<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
-								<Frame.GestureRecognizers>
+					<DataTemplate x:DataType="model:Square">
+						<Frame CornerRadius="0,0,0,0" HeightRequest="45" WidthRequest="45">
+							<Frame.Style  >
+								<Style TargetType="Frame">
+									<Style.Triggers>
+										<DataTrigger TargetType="Frame" Binding="{Binding IsWhite}" Value="True">
+											<Setter Property="Background" Value="#D8B68F" />
+										</DataTrigger>
+										<DataTrigger TargetType="Frame" Binding="{Binding IsWhite}" Value="false
+">
+											<Setter Property="Background" Value="#975635" />
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</Frame.Style>
+
+							<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
+								
+								<!--<Frame.GestureRecognizers>
 									<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
-												  CommandParameter="{Binding Index}"/>
-								</Frame.GestureRecognizers>
+												  CommandParameter="{Binding Row}"/>
+								</Frame.GestureRecognizers>-->
 							</Frame>
-						</Border>
 					</DataTemplate>
 				</CollectionView.ItemTemplate>
 			</CollectionView>
 		</Grid>
-    </VerticalStackLayout>
+	</VerticalStackLayout>
 </ContentPage>

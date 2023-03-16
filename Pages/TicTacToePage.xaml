@@ -32,7 +32,7 @@
 					<DataTemplate x:DataType="model:TicTacToeBoard">
 					<Border StrokeThickness="4" StrokeShape="Rectangle">
 					<Frame BackgroundColor="White" Padding="2"  HeightRequest="80" WidthRequest="80">
-						<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
+						<Image  Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
 						<Frame.GestureRecognizers>
 								<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
 												  CommandParameter="{Binding Index}"/>
