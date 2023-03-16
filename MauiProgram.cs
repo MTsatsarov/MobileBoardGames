@@ -30,6 +30,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<GamesList>();
 		builder.Services.AddSingleton<RegisterPage>();
+		builder.Services.AddSingleton<ChessPage>();
 		builder.Services.AddTransient<TicTacToePage>();
 #if DEBUG
 		builder.Logging.AddDebug();

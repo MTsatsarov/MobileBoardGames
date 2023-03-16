@@ -18,7 +18,7 @@ namespace BoardGames.ViewModels
 			new GamesCollectionModel()
 			{
 				Name = "Chess",
-				Location= nameof(TicTacToePage),
+				Location= nameof(ChessPage),
 				ImagePath ="chess.svg"
 			},
 		};

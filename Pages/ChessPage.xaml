@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BoardGames.Pages.ChessPage"
+             Title="ChessPage">
+    <VerticalStackLayout>
+		<Grid>
+			<CollectionView>
+				<CollectionView.ItemsLayout>
+					<GridItemsLayout Span="8" Orientation="Vertical" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="model:TicTacToeBoard">
+						<Border StrokeThickness="4" StrokeShape="Rectangle">
+							<Frame BackgroundColor="White" Padding="2"  HeightRequest="80" WidthRequest="80">
+								<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
+												  CommandParameter="{Binding Index}"/>
+								</Frame.GestureRecognizers>
+							</Frame>
+						</Border>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</Grid>
+    </VerticalStackLayout>
+</ContentPage>
