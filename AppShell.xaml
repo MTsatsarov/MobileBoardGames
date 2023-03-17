@@ -26,7 +26,7 @@
         ContentTemplate="{DataTemplate local:TicTacToePage}"
         Route="TicTacToePage" />
 	<ShellContent
-        Title="Tic Tac Toe"
+        Title="Chess"
         ContentTemplate="{DataTemplate local:ChessPage}"
-        Route="Chess" />
+        Route="ChessPage" />
 </Shell>

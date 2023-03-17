@@ -49,7 +49,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\chess_bishop_black.svg" />
+	  <None Remove="Resources\Images\chess_bishop_white.svg" />
+	  <None Remove="Resources\Images\chess_black_knight.svg" />
 	  <None Remove="Resources\Images\chess_black_pawn.png" />
+	  <None Remove="Resources\Images\chess_king_black.svg" />
+	  <None Remove="Resources\Images\chess_king_white.svg" />
+	  <None Remove="Resources\Images\chess_queen_black.svg" />
+	  <None Remove="Resources\Images\chess_queen_white.svg" />
+	  <None Remove="Resources\Images\chess_rook_black.svg" />
+	  <None Remove="Resources\Images\chess_rook_white.svg" />
+	  <None Remove="Resources\Images\chess_white_knight.svg" />
+	  <None Remove="Resources\Images\chess_white_pawn.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -73,7 +84,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\Chess\Interfaces\" />
 	  <Folder Include="Resources\Images\Chess\" />
 	</ItemGroup>
 

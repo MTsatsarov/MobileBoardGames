@@ -5,8 +5,7 @@
 			 xmlns:model="clr-namespace:BoardGames.Models.Chess"
 			xmlns:viewmodel="clr-namespace:BoardGames.ViewModels"
 			 x:DataType="viewmodel:ChessViewModel"
-             Title="ChessPage"
-			 Background="red">
+             Title="ChessPage">
 	<VerticalStackLayout VerticalOptions="CenterAndExpand">
 		<Grid >
 			<CollectionView ItemsSource="{Binding Board}" WidthRequest="360" HeightRequest="380">
@@ -15,7 +14,7 @@
 				</CollectionView.ItemsLayout>
 				<CollectionView.ItemTemplate>
 					<DataTemplate x:DataType="model:Square">
-						<Frame CornerRadius="0,0,0,0" HeightRequest="45" WidthRequest="45">
+						<Frame CornerRadius="0" HeightRequest="45" WidthRequest="45">
 							<Frame.Style  >
 								<Style TargetType="Frame">
 									<Style.Triggers>
@@ -29,13 +28,11 @@
 									</Style.Triggers>
 								</Style>
 							</Frame.Style>
-
-							<Image Source="{Binding ImagePath}" IsAnimationPlaying="true"/>
-								
-								<!--<Frame.GestureRecognizers>
-									<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:TicTacToeViewModelcs}}, Path=MakeMoveCommand}"
-												  CommandParameter="{Binding Row}"/>
-								</Frame.GestureRecognizers>-->
+							<Image   Source="{Binding Figure.ImagePath}" WidthRequest="40" HeightRequest="40" />
+								<Frame.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:ChessViewModel}}, Path=tatatat}"
+												  CommandParameter="{Binding .}"/>
+								</Frame.GestureRecognizers>
 							</Frame>
 					</DataTemplate>
 				</CollectionView.ItemTemplate>
